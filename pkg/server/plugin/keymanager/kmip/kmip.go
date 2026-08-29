@@ -201,7 +201,7 @@ func (p *Plugin) GenerateKey(ctx context.Context, req *keymanagerv1.GenerateKeyR
 	if old, ok := p.entries[req.KeyId]; ok {
 		oldUID := old.privateKeyUID
 		go func() {
-			if _, err := client.Destroy(oldUID).ExecContext(context.Background()); err != nil {
+			if _, err := client.Destroy(oldUID).Exec(); err != nil {
 				p.logger.Warn("Failed to destroy old private key", "uid", oldUID, "err", err)
 			}
 		}()

@@ -6,9 +6,9 @@ import (
 	"github.com/spiffe/spire/pkg/server/plugin/keymanager/awskms"
 	"github.com/spiffe/spire/pkg/server/plugin/keymanager/azurekeyvault"
 	"github.com/spiffe/spire/pkg/server/plugin/keymanager/disk"
-	kmipkey "github.com/spiffe/spire/pkg/server/plugin/keymanager/kmip"
 	"github.com/spiffe/spire/pkg/server/plugin/keymanager/gcpkms"
 	"github.com/spiffe/spire/pkg/server/plugin/keymanager/hashicorpvault"
+	kmipkey "github.com/spiffe/spire/pkg/server/plugin/keymanager/kmip"
 	"github.com/spiffe/spire/pkg/server/plugin/keymanager/memory"
 )
 
@@ -42,5 +42,5 @@ func (repo *keyManagerRepository) BuiltIns() []catalog.BuiltIn {
 
 type keyManagerV1 struct{}
 
-func (keyManagerV1) New() catalog.Facade { return new(keymanager.V1) }
+func (keyManagerV1) New() catalog.Facade        { return new(keymanager.V1) }
 func (keyManagerV1) Deprecated() (bool, string) { return false, "" }
